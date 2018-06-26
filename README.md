@@ -1,7 +1,7 @@
 # lrcedit.js
 Making LRC file, on your browser, with Javascript.
 
-Visit [Demo](https://outloudvi.github.io/lrcedit.js) to try making LRC files online!
+Visit [Demo](https://outloudvi.github.io/lrcedit.js/index.html) to try making LRC files online!
 
 (The music on the online demo is Josh Woodward's Swansong. Ubuntu users may have came across that song. The melody is full of creativity.)
 
@@ -22,9 +22,9 @@ Visit [Demo](https://outloudvi.github.io/lrcedit.js) to try making LRC files onl
 ## Which is `this line`?
 The one with darker background... Or the middle one.
 
-## Picture
-![pic/p1.png]
+## Preview
+![https://outloudvi.github.io/lrcedit.js/pic/p1.png]()
 
-![pic/p2.png]
+![https://outloudvi.github.io/lrcedit.js/pic/p2.png]()
 
 BTW, the song "Black Pineapple" is really great.

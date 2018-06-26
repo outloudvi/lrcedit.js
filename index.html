@@ -1,0 +1,158 @@
+<!DOCTYPE HTML>
+<meta charset=utf8 />
+<title>Edit - lrcedit.js</title>
+
+<body>
+  <h1>Edit - lrcedit.js</h1>
+  <p>First, add your source music file to the following &lt;audio&gt;.</p>
+  <p>Then, add your lyric text to the &lt;script&gt; area.</p>
+  <audio id=au src=https://res.cloudinary.com/dgeccmuiy/video/upload/v1529982658/swansong_joshw.mp3 controls></audio>
+  <div id=ed>
+    <button id=toggle>Play</button>
+    <button id=bk2>&lt;&lt; 2.0s</button>
+    <button id=fw2>&gt;&gt; 2.0s</button>
+    <button id=exp> Export </button>
+    <br />
+    Timestamp:
+    <button id=adts>+/R</button>
+    <button id=rmts>-</button>
+    <button id=plin> &lt; </button>
+    <button id=nlin> &gt; </button>
+    <br />
+  </div>
+  <div id=editor>
+    <div style="background: #ddd" id=last></div>
+    <div style="background: #ccc" id=curr></div>
+    <div style="background: #ddd" id=next></div>
+    <div id=prog>0%</div>
+  </div>
+  <div id=result></div>
+</body>
+
+<!-- Put your lyric text HERE -->
+<script id=text type="plain/text">
+  I never thought I'd see the day
+I thought that I had finally moved along
+And I had let you go so long ago, so long
+This is not, this is not where I belong
+
+So I wait for this shallow itch to pass
+And I wait, yeah I wait
+
+Hey hey, I'm ok
+I don't need this anyway, I'm fine
+What's yours and mine
+Oh oh, I don't know
+What I was ever hoping I would find
+But it's time for me to leave this all behind
+
+I don't regret a single thing
+I couldn't say it didn't feel alright
+But I don't want to stay and I don't want to fight
+All alone, with my foolish appetite
+
+So I wait for this shallow itch to pass
+And I wait, yeah I wait
+
+Hey hey, I'm ok
+I don't need this anyway, I'm fine
+What's yours and mine
+Oh oh, I don't know
+What I was ever hoping I would find
+But it's time for me to leave this all behind
+
+I don't have the heart to give away to you again
+I don't have the stomach for it, no one ever wins
+We had our fun but I have sung this song to you before
+Here's my last refrain
+
+Hey hey, I'm ok
+I don't need this anyway, I'm fine
+What's yours and mine
+Oh oh, I don't know
+What I was ever hoping I would find
+But it's time for me to leave this all behind
+
+Hey hey, I'm ok
+I do not need this anyway, I'm fine
+What's yours and mine
+Oh oh, I don't know
+What I was ever hoping I would find
+But it's time for me to leave this all behind
+Leave it all behind
+</script>
+
+<script>
+  var aud = document.getElementById('au');
+  var text = document.getElementById('text').innerText;
+  var spt = text.split('\n');
+
+  function updateEditor(line) {
+    document.getElementById('last').innerHTML = spt[line - 1] ? spt[line - 1] : "<br>";
+    document.getElementById('curr').innerHTML = spt[line] ? spt[line] : "<Br>";
+    document.getElementById('next').innerHTML = spt[line + 1] ? spt[line + 1] : "<br>";
+    document.getElementById('prog').innerText = String(( (cur-1) / spt.length) * 100).slice(0,4) + "%";
+  }
+
+  function getTimestamp(time) {
+    let min = parseInt(time / 60);
+    let sec = parseInt(time - min * 60);
+    let seci = parseInt((time - min * 60 - sec) * 100);
+    return "[" + min + ":" + sec + "." + seci + "]";
+  }
+
+  removeTimestamp = (text) => text.replace(/^\[[0-9]{1,2}:[0-9]{1,2}\.[0-9]{1,2}\]/, "");
+
+  if (aud.src) {
+    console.log("Detected your audio file.");
+  }
+
+  document.getElementById('toggle').addEventListener('click', function () {
+    if (aud.paused) {
+      aud.play();
+      this.innerHTML = "Stop";
+    } else {
+      aud.pause();
+      this.innerHTML = "Play";
+    }
+  });
+
+  var cur = 1;
+  updateEditor(cur);
+
+  document.getElementById('bk2').addEventListener('click', function () {
+    aud.currentTime -= 2;
+  });
+  document.getElementById('fw2').addEventListener('click', function () {
+    aud.currentTime += 2;
+  });
+  document.getElementById('adts').addEventListener('click', function () {
+    spt[cur] = getTimestamp(aud.currentTime) + removeTimestamp(spt[cur]);
+    updateEditor(++cur);
+  });
+  document.getElementById('rmts').addEventListener('click', function () {
+    spt[cur] = removeTimestamp(spt[cur]);
+    updateEditor(cur);
+  });
+  document.getElementById('plin').addEventListener('click', function () {
+    updateEditor(--cur);
+  });
+  document.getElementById('nlin').addEventListener('click', function () {
+    updateEditor(++cur);
+  });
+
+  document.getElementById('exp').addEventListener('click', function(){
+    let res = "";
+    for(i in spt) {
+      res += spt[i] + "<br />";
+    }
+    document.getElementById('result').innerHTML = res;
+  });
+
+/*
+  document.addEventListener('keydown', function (kd) {
+    console.log(kd);
+  });
+*/
+
+</script>

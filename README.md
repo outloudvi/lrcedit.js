@@ -23,8 +23,12 @@ Visit [Demo](https://outloudvi.github.io/lrcedit.js/index.html) to try making LR
 The one with darker background... Or the middle one.
 
 ## Preview
-![https://outloudvi.github.io/lrcedit.js/pic/p1.png]()
+While timestamping
 
-![https://outloudvi.github.io/lrcedit.js/pic/p2.png]()
+![Sample 1](pic/p1.png)
+
+Exported
+
+![Sample 2](pic/p2.png)
 
 BTW, the song "Black Pineapple" is really great.

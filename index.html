@@ -94,12 +94,17 @@ Leave it all behind
     document.getElementById('next').innerHTML = spt[line + 1] ? spt[line + 1] : "<br>";
     document.getElementById('prog').innerText = String(( (cur-1) / spt.length) * 100).slice(0,4) + "%";
   }
+  
+  function padding(sec) {
+    if( sec<10 ) return "0" + String(sec);
+    else return String(sec);
+  }
 
   function getTimestamp(time) {
     let min = parseInt(time / 60);
     let sec = parseInt(time - min * 60);
     let seci = parseInt((time - min * 60 - sec) * 100);
-    return "[" + min + ":" + sec + "." + seci + "]";
+    return "[" + padding(min) + ":" + padding(sec) + "." + padding(seci) + "]";
   }
 
   removeTimestamp = (text) => text.replace(/^\[[0-9]{1,2}:[0-9]{1,2}\.[0-9]{1,2}\]/, "");

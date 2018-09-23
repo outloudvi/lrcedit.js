@@ -5,6 +5,8 @@ Visit [Demo](https://outloudvi.github.io/lrcedit.js/index.html) to try making LR
 
 (The music on the online demo is Josh Woodward's Swansong. Ubuntu users may have came across that song. The melody is full of creativity.)
 
+*It is for entertaining purpose.* For a better experience of online lyric maker, see [magic-akari/lrc-maker](https://github.com/magic-akari/lrc-maker).
+
 ## How-to?
 1. Give your music link to `<audio>`.
 2. Give your lyric text to `<script type=plain/text>`

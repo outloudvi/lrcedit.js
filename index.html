@@ -2,6 +2,11 @@
 <meta charset=utf8 />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Edit - lrcedit.js</title>
+<style>
+  #divTextarea {
+    display: none;
+  }
+</style>
 
 <body>
   <div class="dTalk">
@@ -12,6 +17,12 @@
   </div>
   <div class="dInput">
       <input type="file" id="inpFile">
+      <span> AND </span>
+      <button id="btnAddText">Add Text</button>
+      <div id="divTextarea">
+        <textarea id="tText" cols="30" rows="10"></textarea>
+        <button id="btnDone">Done</button>
+      </div>
   </div>
   <div class="dAudio">
       <audio id="audio" src="https://res.cloudinary.com/dgeccmuiy/video/upload/v1529982658/swansong_joshw.mp3" controls></audio>
@@ -39,8 +50,7 @@
 </body>
 
 <!-- Put your lyric text HERE -->
-<script id="text" type="plain/text">
-  I never thought I'd see the day
+<script id="text" type="plain/text">I never thought I'd see the day
 I thought that I had finally moved along
 And I had let you go so long ago, so long
 This is not, this is not where I belong
@@ -88,13 +98,17 @@ What's yours and mine
 Oh oh, I don't know
 What I was ever hoping I would find
 But it's time for me to leave this all behind
-Leave it all behind
-</script>
+Leave it all behind</script>
 
 <script>
   var aud = document.getElementById('audio');
-  var text = document.getElementById('text').innerText;
-  var spt = text.split('\n');
+  var text,spt,cur;
+
+  function startSync(){
+    spt = text.split('\n');
+    cur = 0;
+    updateEditor(0);
+  }
 
   function updateEditor(line) {
     document.getElementById('lastLine').innerHTML = spt[line - 1] ? spt[line - 1] : "<br>";
@@ -117,7 +131,7 @@ Leave it all behind
 
   removeTimestamp = (text) => text.replace(/^\[[0-9]{1,2}:[0-9]{1,2}\.[0-9]{1,2}\]/, "");
 
-  if (aud.src) {
+  if (aud && aud.src) {
     console.log("Detected your audio file.");
   }
 
@@ -130,9 +144,6 @@ Leave it all behind
       this.innerHTML = "Play";
     }
   });
-
-  var cur = 1;
-  updateEditor(cur);
 
   document.getElementById('back2Sec').addEventListener('click', function () {
     aud.currentTime -= 2;
@@ -166,5 +177,19 @@ Leave it all behind
   document.getElementById('inpFile').addEventListener('change', function () {
     document.getElementById('audio').src = window.URL.createObjectURL(document.getElementById("inpFile").files[0]);
   });
+
+  document.getElementById('btnAddText').addEventListener('click', function () {
+    document.getElementById('divTextarea').style.display = 'block';
+  });
+  
+  document.getElementById('btnDone').addEventListener('click', function () {
+    text = document.getElementById('tText').value;
+    startSync();
+    document.getElementById('divTextarea').style.display = 'none';
+  })
+
+  // Default
+  text = document.getElementById('text').innerText;
+  startSync();
 
 </script>

@@ -4,10 +4,18 @@
 <title>Edit - lrcedit.js</title>
 
 <body>
-  <h1>Edit - lrcedit.js</h1>
-  <p>First, add your source music file to the following &lt;audio&gt;.</p>
-  <p>Then, add your lyric text to the &lt;script&gt; area.</p>
-  <audio id="audio" src="https://res.cloudinary.com/dgeccmuiy/video/upload/v1529982658/swansong_joshw.mp3" controls></audio>
+  <div class="dTalk">
+      <h1>Edit - lrcedit.js</h1>
+      <p>
+      First, add your source music file to the following &lt;audio&gt;.<br />
+      Then, add your lyric text to the &lt;script&gt; area.</p>
+  </div>
+  <div class="dInput">
+      <input type="file" id="inpFile">
+  </div>
+  <div class="dAudio">
+      <audio id="audio" src="https://res.cloudinary.com/dgeccmuiy/video/upload/v1529982658/swansong_joshw.mp3" controls></audio>
+  </div>
   <div id="editor">
     <button id="btnToggle">Play</button>
     <button id="back2Sec">&lt;&lt; 2.0s</button>
@@ -153,6 +161,10 @@ Leave it all behind
       res += spt[i] + "<br />";
     }
     document.getElementById('result').innerHTML = res;
+  });
+
+  document.getElementById('inpFile').addEventListener('change', function () {
+    document.getElementById('audio').src = window.URL.createObjectURL(document.getElementById("inpFile").files[0]);
   });
 
 </script>

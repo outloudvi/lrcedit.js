@@ -6,45 +6,57 @@
   #divTextarea {
     display: none;
   }
+  .dInput, .dAudio {
+    margin: 5px 10px
+  }
+  .musicControl, .tsControl {
+    margin: 5px 10px;
+  }
+  #spSpace {
+    margin: 0 10px
+  }
+  audio {
+    width: 300px;
+  }
 </style>
 
 <body>
   <div class="dTalk">
-      <h1>Edit - lrcedit.js</h1>
-      <p>
+    <h1>Edit - lrcedit.js</h1>
+    <p>
       First, add your source music file to the following &lt;audio&gt;.<br />
       Then, add your lyric text to the &lt;script&gt; area.</p>
   </div>
   <div class="dInput">
-      <input type="file" id="inpFile">
-      <span> AND </span>
-      <button id="btnAddText">Add Text</button>
-      <div id="divTextarea">
-        <textarea id="tText" cols="30" rows="10"></textarea>
-        <button id="btnDone">Done</button>
-      </div>
+    <input type="file" id="inpFile">
+    <span id="spSpace"> AND </span>
+    <button id="btnAddText">Add Text</button>
+    <div id="divTextarea">
+      <textarea id="tText" cols="30" rows="10"></textarea>
+      <button id="btnDone">Done</button>
+    </div>
   </div>
   <div class="dAudio">
-      <audio id="audio" src="https://res.cloudinary.com/dgeccmuiy/video/upload/v1529982658/swansong_joshw.mp3" controls></audio>
+    <audio id="audio" src="https://res.cloudinary.com/dgeccmuiy/video/upload/v1529982658/swansong_joshw.mp3" controls></audio>
   </div>
   <div id="editor">
-    <button id="btnToggle">Play</button>
-    <button id="back2Sec">&lt;&lt; 2.0s</button>
-    <button id="fwd2Sec">&gt;&gt; 2.0s</button>
-    <button id="btnExport"> Export </button>
-    <br />
-    Timestamp:
-    <button id="addTimestamp">+/R</button>
-    <button id="removeTimestamp">-</button>
-    <button id="btnPrevLine"> &lt; </button>
-    <button id="btnNextLine"> &gt; </button>
-    <br />
-  </div>
-  <div id="editor">
+    <div class="musicControl">
+      <button id="btnToggle">Play</button>
+      <button id="back2Sec">&lt;&lt; 2.0s</button>
+      <button id="fwd2Sec">&gt;&gt; 2.0s</button>
+      <button id="btnExport"> Export </button>
+    </div>
+    <div class="tsControl">
+      Timing:
+      <button id="addTimestamp">+/R</button>
+      <button id="removeTimestamp">-</button>
+      <button id="btnPrevLine"> &lt; </button>
+      <button id="btnNextLine"> &gt; </button>
+      [<span id="progBar">0%</span>]
+    </div>
     <div style="background: #ddd" id="lastLine"></div>
     <div style="background: #ccc" id="currLine"></div>
     <div style="background: #ddd" id="nextLine"></div>
-    <div id="progBar">0%</div>
   </div>
   <div id="result"></div>
 </body>
@@ -102,9 +114,9 @@ Leave it all behind</script>
 
 <script>
   var aud = document.getElementById('audio');
-  var text,spt,cur;
+  var text, spt, cur;
 
-  function startSync(){
+  function startSync() {
     spt = text.split('\n');
     cur = 0;
     updateEditor(0);
@@ -181,7 +193,7 @@ Leave it all behind</script>
   document.getElementById('btnAddText').addEventListener('click', function () {
     document.getElementById('divTextarea').style.display = 'block';
   });
-  
+
   document.getElementById('btnDone').addEventListener('click', function () {
     text = document.getElementById('tText').value;
     startSync();

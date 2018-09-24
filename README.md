@@ -8,8 +8,8 @@ Visit [Demo](https://outloudvi.github.io/lrcedit.js/index.html) to try making LR
 *It is for entertaining purpose.* For a better experience of online lyric maker, see [magic-akari/lrc-maker](https://github.com/magic-akari/lrc-maker).
 
 ## How-to?
-1. Give your music link to `<audio>`.
-2. Give your lyric text to `<script type=plain/text>`
+1. Give your music to `<audio>`.
+2. Give your lyric text to `<script type=plain/text>` (or input it on the site)
 3. Just click +/R to add timestamps. C'mon rhythm!
 
 ## What's the buttons?
@@ -21,16 +21,9 @@ Visit [Demo](https://outloudvi.github.io/lrcedit.js/index.html) to try making LR
 * `<` - Next line
 * `>` - Previous line
 
-## Which is `this line`?
+## Which is the current line?
 The one with darker background... Or the middle one.
 
-## Preview
-While timestamping
-
-![Sample 1](pic/p1.png)
-
-Exported
-
-![Sample 2](pic/p2.png)
+[**Preview**](https://github.com/outloudvi/lrcedit.js/issues/2)
 
 BTW, the song "Black Pineapple" is really great.

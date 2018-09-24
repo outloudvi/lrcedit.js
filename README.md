@@ -25,5 +25,3 @@ Visit [Demo](https://outloudvi.github.io/lrcedit.js/index.html) to try making LR
 The one with darker background... Or the middle one.
 
 [**Preview**](https://github.com/outloudvi/lrcedit.js/issues/2)
-
-BTW, the song "Black Pineapple" is really great.

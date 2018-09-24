@@ -15,9 +15,6 @@
   #spSpace {
     margin: 0 10px
   }
-  audio {
-    width: 300px;
-  }
 </style>
 
 <body>
@@ -52,6 +49,7 @@
       <button id="removeTimestamp">-</button>
       <button id="btnPrevLine"> &lt; </button>
       <button id="btnNextLine"> &gt; </button>
+      <br />
       [<span id="progBar">0%</span>]
     </div>
     <div style="background: #ddd" id="lastLine"></div>
@@ -191,6 +189,7 @@ Leave it all behind</script>
   });
 
   document.getElementById('btnAddText').addEventListener('click', function () {
+    document.getElementById('tText').value = text;
     document.getElementById('divTextarea').style.display = 'block';
   });
 
